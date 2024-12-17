@@ -15,6 +15,14 @@ public class RobotContainer {
     return driverController.getRawAxis(axis);
   }
 
+  public double GetRightTriggerAxis() {
+    return driverController.getRightTriggerAxis();
+  }
+
+  public double GetLeftTriggerAxis() {
+    return driverController.getLeftTriggerAxis();
+  }
+
   public RobotContainer() {
     configureBindings();
   }
