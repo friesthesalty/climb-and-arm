@@ -10,23 +10,40 @@ import frc.robot.RobotMap;
 
 public class ClimbAndArm extends SubsystemBase {
 
-  private Spark armMotorLeft = new Spark(RobotMap.ARM_MOTOR_LEFT);
-  private Spark armMotorRight = new Spark(RobotMap.ARM_MOTOR_RIGHT);
+  private Spark clawMotorLeft = new Spark(RobotMap.CLAW_MOTOR_LEFT);
+  private Spark clawMotorRight = new Spark(RobotMap.CLAW_MOTOR_RIGHT);
+  private Spark stageMotorLeft = new Spark(RobotMap.STAGE_MOTOR_LEFT);
+  private Spark stageMotorRight = new Spark(RobotMap.STAGE_MOTOR_RIGHT);
 
   public void close() {
-    armMotorLeft.set(1); // just some constant speed
-    armMotorRight.set(0);
+    clawMotorLeft.set(0.1); // just some constant speed
+    clawMotorRight.set(0);
   }
 
   public void open() {
-    armMotorRight.set(1);
-    armMotorLeft.set(0);
+    clawMotorRight.set(0.1);
+    clawMotorLeft.set(0);
   }
 
 
-  public void stop() {
-    armMotorLeft.set(0);
-    armMotorLeft.set(0);
+  public void clawStop() {
+    clawMotorLeft.set(0);
+    clawMotorLeft.set(0);
+  }
+
+  public void moveUp() {
+    stageMotorLeft.set(0.1);
+    stageMotorRight.set(0);
+  }
+
+  public void moveDown() {
+    stageMotorRight.set(0.1);
+    stageMotorLeft.set(0);
+  }
+
+  public void stageStop() {
+    stageMotorLeft.set(0);
+    stageMotorLeft.set(0);
   }
 
   /** Creates a new climbAndArm. */
@@ -36,4 +53,6 @@ public class ClimbAndArm extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  
 }
